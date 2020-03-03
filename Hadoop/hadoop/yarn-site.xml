@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<configuration>
+
+<property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>20480</value>
+        </property>
+        <property>
+           <name>yarn.scheduler.minimum-allocation-mb</name>
+              <value>3070</value>
+              </property>
+              <property>
+                  <name>yarn.nodemanager.vmem-pmem-ratio</name>
+                      <value>2.1</value>
+                      </property>
+<!-- Site specific YARN configuration properties -->
+<!--rm失联后重新链接的时间--> 
+ 	<property> 
+   		<name>yarn.resourcemanager.connect.retry-interval.ms</name> 
+   		<value>2000</value> 
+ 	</property>
+<!--开启resource manager HA,默认为false
+ 	<property> 
+    		<name>yarn.resourcemanager.ha.enabled</name> 
+    		<value>true</value> 
+ 	</property> --> 
+
+
+<!--开启resourcemanager自动恢复功能--> 
+ 	<property>
+   		<name>yarn.resourcemanager.recovery.enabled</name> 
+   		<value>true</value> 
+ 	</property> 
+	<!--失联等待连接时间-->  
+		<property>  
+	 		<name>yarn.app.mapreduce.am.scheduler.connection.wait.interval-ms</name> 
+	  		<value>5000</value> 
+		</property>
+<!-- 集群的Id，使用该值确保RM不会做为其它集群的active -->
+
+<!--配置rm1--> 
+<property> 
+  	<name>yarn.resourcemanager.address</name> 
+  	<value>hp-01:8132</value> 
+</property> 
+
+
+<property> 
+  	<name>yarn.resourcemanager.scheduler.address</name> 
+  	<value>hp-01:8130</value> 
+</property> 
+
+
+<!-- RM的网页接口地址：端口-->
+<property> 
+  	<name>yarn.resourcemanager.webapp.address</name> 
+  	<value>hp-01:8088</value>
+</property> 
+
+
+<property>
+   	<name>yarn.resourcemanager.resource-tracker.address</name> 
+   	<value>hp-01:8931</value>
+</property> 
+
+
+<!-- RM管理接口地址：端口-->
+<property> 
+  <name>yarn.resourcemanager.admin.address</name> 
+  <value>hp-01:8033</value>
+</property> 
+
+
+<property> 
+  	<name>yarn.resourcemanager.admin.address</name> 
+  	<value>hp-01:23142</value>
+</property> 
+
+
+
+<!--请配置为：mapreduce_shuffle，在Yarn上开启MR的必须项-->
+<property> 
+  	<name>yarn.nodemanager.aux-services</name> 
+  	<value>mapreduce_shuffle</value> 
+</property> 
+
+
+<property> 
+  	<name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name> 
+  	<value>org.apache.hadoop.mapred.ShuffleHandler</value> 
+</property> 
+
+        <property> 
+             <name> yarn.resourcemanager.hostname </name> 
+             <value> hp-01 </value>
+        </property> 
+
+</configuration>
